@@ -54,7 +54,17 @@ class DP():
 
 
         
+	def Max_val_cont(self,sequence=[1,0,3,-10,10,1,2,3]):
+			#maximum contiguous subsequence
+			n=len(sequence)
+			if (n==0):
+				return []
+			else:
+				return	self._Max_val_cont_OPT(sequence,n-1)
 
-
-
-
+	def _Max_val_cont_OPT(self,sequence,j):
+		if (j<=-1):
+			return 0
+		else:
+			p= max(sequence[j]+self._Max_val_cont_OPT(sequence,j-1),sequence[j])
+			return p
